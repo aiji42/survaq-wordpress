@@ -15,8 +15,13 @@ RUN apt-get update && apt-get install -y \
     apt-get install -y gcsfuse && \
     apt-get clean
 
-# フォールバックマウントディレクトリの設定
-ENV MNT_DIR /var/www/html
+# WordPressの全体をコピー
+COPY ./src /var/www/html
+
+# マウントのために3つのディレクトリを削除
+RUN rm -rf /var/www/html/wp-content/themes \
+           /var/www/html/wp-content/plugins \
+           /var/www/html/wp-content/upgrade
 
 # gcsfuse_run.sh スクリプトをコンテナに追加
 COPY gcsfuse_run.sh /usr/local/bin/gcsfuse_run.sh
