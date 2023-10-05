@@ -39,6 +39,11 @@ if (!function_exists('getenv_docker')) {
 	}
 }
 
+/** Allow access from any host regardless of configuration */
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+define('WP_HOME', $protocol . $_SERVER['HTTP_HOST']  );
+define('WP_SITEURL', WP_HOME );
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', getenv_docker('WORDPRESS_DB_NAME', 'wordpress') );
