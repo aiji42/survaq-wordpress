@@ -1,0 +1,14 @@
+version: '3'
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - 8081:80
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: $DATABASE_HOST
+      WORDPRESS_DB_USER: $DATABASE_USERNAME
+      WORDPRESS_DB_PASSWORD: $DATABASE_PASSWORD
+      WORDPRESS_DB_NAME: $DATABASE_NAME
+      WORDPRESS_DEBUG: 1
