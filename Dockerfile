@@ -24,9 +24,6 @@ COPY gcsfuse_run.sh /usr/local/bin/gcsfuse_run.sh
 # スクリプトが実行可能であることを確認
 RUN chmod +x /usr/local/bin/gcsfuse_run.sh
 
-# apacheの設定ファイルを上書き
-COPY my-000-default.conf /etc/apache2/sites-available/000-default.conf
-
 # tiniを使用してゾンビプロセスとシグナルの転送を管理
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
