@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean
 
 # フォールバックマウントディレクトリの設定
-ENV MNT_DIR /mnt/gcs
+ENV MNT_DIR /var/www/html
 
 # gcsfuse_run.sh スクリプトをコンテナに追加
 COPY gcsfuse_run.sh /usr/local/bin/gcsfuse_run.sh
